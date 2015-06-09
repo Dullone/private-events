@@ -12,9 +12,17 @@
 </div>
 
 <h3>Attending:</h3>
+<h4>Upcoming events:</h4>
 <div class="attending">
-  <% @user.invitations.each do |invitation| %>
-    Location: <%= invitation.event.location %><br/>
-    time: <%= invitation.event.date %><br/>
-  <% end %>
+  <div class="upcoming-events">
+    <% @upcoming_events.each do |event| %>
+      <%= render 'shared/event', :event => event %>
+    <% end %>
+  </div>
+  <h4>Past events:</h4>
+  <div class="past-events">
+    <% @past_events.each do |event| %>
+      <%= render 'shared/event', :event => event %>
+    <% end %>
+  </div>
 </div>
