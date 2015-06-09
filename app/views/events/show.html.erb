@@ -1,0 +1,26 @@
+<h1>Event</h1>
+
+<h4>location: </h4><%= @event.location %>
+<p>
+Time: <%= @event.date %>
+</p>
+
+<h3>Add invitation:</h3>
+<div>
+  <%= form_tag(invitations_path, method: 'post' ) do %>
+    <%= label_tag :name %>
+    <%= text_field_tag :name %>
+
+    <%= hidden_field_tag 'event_id', @event.id %>
+
+
+    <%= submit_tag "add invitation" %>
+  <% end %>
+</div>
+
+<div>
+  <h3>Attendees</h3>
+  <% @event.invitations.each do |invite| %>
+    <%= link_to invite.user.name, invite.user %><br/>
+  <% end %>
+</div>

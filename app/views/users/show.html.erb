@@ -1,0 +1,20 @@
+<h1><%= @user.name if @user %>'s profile:</h1>
+
+<div class="events">
+  <h3>Events:</h3>
+  <% @user.events.each do |event| %>
+    <div>
+      Location: <%=  event.location %><br/>
+      Time: <%=  event.date %><br/>
+      <%= link_to("manage", event_path(event.id)) %>
+     </div>
+  <% end %>
+</div>
+
+<h3>Attending:</h3>
+<div class="attending">
+  <% @user.invitations.each do |invitation| %>
+    Location: <%= invitation.event.location %><br/>
+    time: <%= invitation.event.date %><br/>
+  <% end %>
+</div>
